@@ -19,15 +19,15 @@ function print_pwd
   set -l SLASH_COLOR (set_color brblue)
   set -l PATH_COLOR (set_color brcyan)
 
-  set -l directory $PATH_COLOR$directory
-  set -l directory (string replace --regex --all '/' "$SLASH_COLOR"'/'"$PATH_COLOR" $directory)
-  set -l directory $directory$RESET_COLOR
-
   set -l MINE_COLOR (set_color --bold)
   set -l WORK_COLOR (set_color --bold)
 
-  set -l directory (string replace --regex '(\$MINE_PATH)' "$MINE_COLOR"'$1'"$RESET_COLOR" $directory)
-  set -l directory (string replace --regex '(\$WORK_PATH)' "$WORK_COLOR"'$1'"$RESET_COLOR" $directory)
+  set -l directory (string replace --regex '^(\$MINE_PATH)' "$MINE_COLOR"'$1'"$RESET_COLOR" $directory)
+  set -l directory (string replace --regex '^(\$WORK_PATH)' "$WORK_COLOR"'$1'"$RESET_COLOR" $directory)
+
+  set -l directory $PATH_COLOR$directory
+  set -l directory (string replace --regex --all '/' "$SLASH_COLOR"'/'"$PATH_COLOR" $directory)
+  set -l directory $directory$RESET_COLOR
 
   echo $directory
 end
