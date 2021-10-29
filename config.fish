@@ -4,6 +4,30 @@ not status is-interactive && exit
 
 fish_add_path "/home/emilyseville7cfg/.local/bin"
 
+set -g RESET_COLOR (set_color normal)
+
+function git_repo_recreate --description 'Recreates repo from existing origin remote'
+  set -l NO_VALID_REPO_ERROR 1
+
+  set -l PATH_COLOR (set_color brcyan)
+  set -l REMOTE_COLOR (set_color brcyan)
+
+  if test ! -d .git
+    echo '❌ Can\'t recreate .git repo from remote because '$PATH_COLOR\"$PWD\"$RESET_COLOR' doesn\'t contain .git folder.' >&2
+    return $NO_VALID_REPO_ERROR
+  end
+
+  set -l remote (git config --get remote.origin.url)
+  if set -q $remote[1]
+    echo -e '❌ Can\'t recreate .git repo from remote because '$PATH_COLOR\"$PWD\"$RESET_COLOR' repo hasn\'t '$REMOTE_COLOR\"origin\"$RESET_COLOR' remote configured.' >&2
+    return $WRONG_INPUT
+  end
+
+  rm -rf .git
+  rm -rf -- * .* &> /dev/null
+  git clone $remote .
+end
+
 set -g MINE_PATH "~/Documents/mine"
 set -g WORK_PATH "~/Documents/work"
 
@@ -20,8 +44,6 @@ end
 
 function colorize_path --description 'Colorizes path'
   set -l directory $argv[1]
-
-  set -l RESET_COLOR (set_color normal)
 
   set -l SLASH_COLOR (set_color brblue)
   set -l PATH_COLOR (set_color brcyan)
