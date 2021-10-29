@@ -6,7 +6,7 @@ fish_add_path "/home/emilyseville7cfg/.local/bin"
 
 set -g RESET_COLOR (set_color normal)
 
-function git_repo_recreate --description 'Recreates repo from existing origin remote'
+function git_repo_recreate
   set -l NO_VALID_REPO_ERROR 1
 
   set -l PATH_COLOR (set_color brcyan)
@@ -20,7 +20,7 @@ function git_repo_recreate --description 'Recreates repo from existing origin re
   set -l remote (git config --get remote.origin.url)
   if set -q $remote[1]
     echo -e '❌ Can\'t recreate .git repo from remote because '$PATH_COLOR\"$PWD\"$RESET_COLOR' repo hasn\'t '$REMOTE_COLOR\"origin\"$RESET_COLOR' remote configured.' >&2
-    return $WRONG_INPUT
+    return $NO_VALID_REPO_ERROR
   end
 
   rm -rf .git
