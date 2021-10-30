@@ -28,6 +28,37 @@ function git_repo_recreate --description 'Recreates repo from remote'
   git clone $remote .
 end
 
+function create_abbrevation --description 'Creates specified abbrevation when there is no abbrevation with the same name'
+  set -l ABBREVATION $argv[1]
+  set -l COMMAND $argv[2]
+
+  ! abbr -q "$ABBREVATION" && abbr -a -U $ABBREVATION $COMMAND
+end
+
+function create_abbrevations --description 'Creates missing abbrevations'
+  set abbrevations cmi 'cd /home/emilyseville7cfg/Documents/mine/'
+  set -a abbrevations cwo 'cd /home/emilyseville7cfg/Documents/work/'
+  set -a abbrevations e echo
+  set -a abbrevations f for
+  set -a abbrevations gcl 'git clone'
+  set -a abbrevations gfe 'git fetch'
+  set -a abbrevations gin 'git init'
+  set -a abbrevations gre 'e 1'
+  set -a abbrevations gsy 'git pull && git push'
+  set -a abbrevations gun 'rm -rf .git'
+  set -a abbrevations i 'if test'
+  set -a abbrevations pf printf
+  set -a abbrevations r 'source /home/emilyseville7cfg/.config/fish/config.fish'
+  set -a abbrevations w 'while test'
+
+  set -l i 1
+  while test $i -le (count $abbrevations)
+    create_abbrevation $abbrevations[$i] $abbrevations[(math $i + 1)]
+    echo $abbrevations[$i] $abbrevations[(math $i + 1)]
+    set i (math $i + 2)
+  end
+end
+
 set -g MINE_PATH "~/Documents/mine"
 set -g WORK_PATH "~/Documents/work"
 
@@ -76,3 +107,5 @@ function fish_prompt
 
   echo -s (set_color yellow) (cwd_prompt) $user_char
 end
+
+create_abbrevations
