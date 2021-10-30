@@ -54,7 +54,6 @@ function create_abbrevations --description 'Creates missing abbrevations'
   set -l i 1
   while test $i -le (count $abbrevations)
     create_abbrevation $abbrevations[$i] $abbrevations[(math $i + 1)]
-    echo $abbrevations[$i] $abbrevations[(math $i + 1)]
     set i (math $i + 2)
   end
 end
