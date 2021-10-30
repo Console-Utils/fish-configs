@@ -6,7 +6,7 @@ fish_add_path "/home/emilyseville7cfg/.local/bin"
 
 set -g RESET_COLOR (set_color normal)
 
-function git_repo_recreate
+function git_repo_recreate --description 'Recreates repo from remote'
   set -l NO_VALID_REPO_ERROR 1
 
   set -l PATH_COLOR (set_color brcyan)
@@ -61,7 +61,7 @@ function colorize_path --description 'Colorizes path'
   echo $directory
 end
 
-function cwd_prompt
+function cwd_prompt --description 'Prints $PWD in human-readable format'
   set -l directory $PWD
 
   set -l directory (transform_path $directory)
