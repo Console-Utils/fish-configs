@@ -7,17 +7,17 @@ fish_add_path "/home/emilyseville7cfg/.local/bin"
 set -g RESET_COLOR (set_color normal)
 
 function git_repo_recreate --description 'Recreates repo from remote'
-  set -l NO_VALID_REPO_ERROR 1
+  set --local NO_VALID_REPO_ERROR 1
 
-  set -l PATH_COLOR (set_color brcyan)
-  set -l REMOTE_COLOR (set_color brcyan)
+  set --local PATH_COLOR (set_color brcyan)
+  set --local REMOTE_COLOR (set_color brcyan)
 
   if test ! -d .git
     echo '❌ Can\'t recreate .git repo from remote because '$PATH_COLOR\"$PWD\"$RESET_COLOR' doesn\'t contain .git folder.' >&2
     return $NO_VALID_REPO_ERROR
   end
 
-  set -l remote (git config --get remote.origin.url)
+  set --local remote (git config --get remote.origin.url)
   if set -q $remote[1]
     echo -e '❌ Can\'t recreate .git repo from remote because '$PATH_COLOR\"$PWD\"$RESET_COLOR' repo hasn\'t '$REMOTE_COLOR\"origin\"$RESET_COLOR' remote configured.' >&2
     return $NO_VALID_REPO_ERROR
@@ -29,8 +29,8 @@ function git_repo_recreate --description 'Recreates repo from remote'
 end
 
 function create_abbrevation --description 'Creates specified abbrevation when there is no abbrevation with the same name'
-  set -l ABBREVATION $argv[1]
-  set -l COMMAND $argv[2]
+  set --local ABBREVATION $argv[1]
+  set --local COMMAND $argv[2]
 
   ! abbr -q "$ABBREVATION" && abbr -a -U $ABBREVATION $COMMAND
 end
@@ -51,7 +51,7 @@ function create_abbrevations --description 'Creates missing abbrevations'
   set -a abbrevations r 'source /home/emilyseville7cfg/.config/fish/config.fish'
   set -a abbrevations w 'while test'
 
-  set -l i 1
+  set --local i 1
   while test $i -le (count $abbrevations)
     create_abbrevation $abbrevations[$i] $abbrevations[(math $i + 1)]
     set i (math $i + 2)
@@ -62,49 +62,68 @@ set -g MINE_PATH "~/Documents/mine"
 set -g WORK_PATH "~/Documents/work"
 
 function transform_path --description 'Replaces $HOME with tilde and mine/work dirs with special keywords'
-  set -l directory $argv[1]
+  set --local directory $argv[1]
 
-  set -l directory (string replace --regex '^'"$HOME" '~' $directory)
+  set --local directory (string replace --regex '^'"$HOME" '~' $directory)
 
-  set -l directory (string replace --regex '^'"$MINE_PATH" '\$MINE_PATH' $directory)
-  set -l directory (string replace --regex '^'"$WORK_PATH" '\$WORK_PATH' $directory)
+  set --local directory (string replace --regex '^'"$MINE_PATH" '\$MINE_PATH' $directory)
+  set --local directory (string replace --regex '^'"$WORK_PATH" '\$WORK_PATH' $directory)
 
   echo $directory
 end
 
 function colorize_path --description 'Colorizes path'
-  set -l directory $argv[1]
+  set --local directory $argv[1]
 
-  set -l SLASH_COLOR (set_color brblue)
-  set -l PATH_COLOR (set_color brcyan)
+  set --local SLASH_COLOR (set_color brblue)
+  set --local PATH_COLOR (set_color brcyan)
 
-  set -l MINE_COLOR (set_color --bold)
-  set -l WORK_COLOR (set_color --bold)
+  set --local MINE_COLOR (set_color --bold)
+  set --local WORK_COLOR (set_color --bold)
 
-  set -l directory (string replace --regex '^(\$MINE_PATH)' "$MINE_COLOR"'🏠$1'"$RESET_COLOR" $directory)
-  set -l directory (string replace --regex '^(\$WORK_PATH)' "$WORK_COLOR"'🏢$1'"$RESET_COLOR" $directory)
+  set --local directory (string replace --regex '^(\$MINE_PATH)' "$MINE_COLOR"'🏠$1'"$RESET_COLOR" $directory)
+  set --local directory (string replace --regex '^(\$WORK_PATH)' "$WORK_COLOR"'🏢$1'"$RESET_COLOR" $directory)
 
-  set -l directory $PATH_COLOR$directory
-  set -l directory (string replace --regex --all '/' "$SLASH_COLOR"'/'"$PATH_COLOR" $directory)
-  set -l directory $directory$RESET_COLOR
+  set --local directory $PATH_COLOR$directory
+  set --local directory (string replace --regex --all '/' "$SLASH_COLOR"'/'"$PATH_COLOR" $directory)
+  set --local directory $directory$RESET_COLOR
 
   echo $directory
 end
 
 function cwd_prompt --description 'Prints $PWD in human-readable format'
-  set -l directory $PWD
+  set --local directory $PWD
 
-  set -l directory (transform_path $directory)
-  set -l directory (colorize_path $directory)
+  set --local directory (transform_path $directory)
+  set --local directory (colorize_path $directory)
 
   echo $directory
 end
 
+function pipestatus_prompt --description 'Prints $pipestatus in human-readable format'
+  set --local statuses $argv
+
+  set --local BRACKETS_COLOR (set_color red)
+  set --local DELIMITER_COLOR (set_color purple)
+  set --local STATUS_COLOR (set_color brred)
+
+  echo -n $BRACKETS_COLOR'['
+
+  for i in (seq 1 (count $statuses))
+    echo -n $STATUS_COLOR$statuses[$i]
+    test $i -lt (count $statuses) && echo -n $DELIMITER_COLOR'|'
+  end
+
+  echo -n $BRACKETS_COLOR']'
+end
+
 function fish_prompt
-  set -l user_char '💲'
+  set --local statuses $pipestatus
+
+  set --local user_char '💲'
   fish_is_root_user && set user_char '⭐💲'
 
-  echo -s (set_color yellow) (cwd_prompt) $user_char
+  echo -s (set_color yellow) (cwd_prompt) (pipestatus_prompt $statuses) $user_char
 end
 
 create_abbrevations
