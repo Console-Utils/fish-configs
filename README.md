@@ -20,7 +20,7 @@ There are several environment variables to control how prompt is displayed and h
 
 ### Abbreviation-specific environment variables
 
-- `PROMPT_ABBR_IDENTIFIER` - specifies abbreviation identifier color to be diplayed in messages from helper functions
+- `PROMPT_ABBR_IDENTIFIER_COLOR` - specifies abbreviation identifier color to be diplayed in messages from helper functions
 
 ### Git-specific environment variables
 
