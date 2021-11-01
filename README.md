@@ -18,6 +18,10 @@ There are several environment variables to control how prompt is displayed and h
 - `PROMPT_WARNING_SIGN` - specifies string to be displayed when some operation completed successfully but with warnings
 - `PROMPT_ERROR_SIGN` - specifies string to be displayed when some operation failed
 
+### Abbreviation-specific environment variables
+
+- `PROMPT_ABBR_IDENTIFIER` - specifies abbreviation identifier color to be diplayed in messages from helper functions
+
 ### Git-specific environment variables
 
 - `PROMPT_GIT_PATH_COLOR` - specifies path color to be diplayed in messages from helper functions
