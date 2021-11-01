@@ -45,5 +45,6 @@ function abbreviations_recreate --description 'Creates missing abbreviations'
     set i (math $i + 2)
   end
 
-  return (test $errors -eq 0)
+  test $errors -eq 0
+  return $test
 end
