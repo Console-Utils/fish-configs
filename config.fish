@@ -34,22 +34,13 @@ function create_abbrevations --description 'Creates missing abbrevations'
   end
 end
 
-function cwd_prompt --description 'Prints $PWD in human-readable format'
-  set --local directory $PWD
-
-  set --local directory (__transform_path $directory)
-  set --local directory (__colorize_path $directory)
-
-  echo $directory
-end
-
 function fish_prompt
   set --local statuses $pipestatus
 
   set --local user_char '💲'
   fish_is_root_user && set user_char '⭐💲'
 
-  echo -s (set_color yellow) (cwd_prompt) (__pipestatus_prompt $statuses) $user_char
+  echo -s (set_color yellow) (__cwd_prompt) (__pipestatus_prompt $statuses) $user_char
 end
 
 create_abbrevations
