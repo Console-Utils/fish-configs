@@ -11,7 +11,7 @@ function __create_abbreviation --description 'Creates specified abbreviation'
 
   if abbr --query $ABBREVIATION
     echo -s $PROMPT_ERROR_SIGN'Can\'t create '\
-      $PROMPT_ABBR_IDENTIFIER\"$COMMAND\"$RESET_COLOR' abbreviation because hasn\'t '\
+      $PROMPT_ABBR_IDENTIFIER\"$COMMAND\"$RESET_COLOR' abbreviation because '\
       $PROMPT_ABBR_IDENTIFIER\"$ABBREVIATION\"$RESET_COLOR' already exists.' >&2
     return $NOT_VALID_ABBREVIATION_ERROR
   end
