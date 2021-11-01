@@ -15,7 +15,7 @@ function git_repo_recreate --description 'Recreates repo from remote'
   end
 
   set --local remote (git config --get remote.origin.url)
-  if set -q $remote[1]
+  if set --query $remote[1]
     echo -s $PROMPT_ERROR_SIGN'Can\'t recreate .git repo from remote because '\
       $PROMPT_GIT_PATH_COLOR\"$PWD\"$RESET_COLOR' repo hasn\'t '\
       $PROMPT_GIT_IDENTIFIER_COLOR\"origin\"$RESET_COLOR' remote configured.' >&2
