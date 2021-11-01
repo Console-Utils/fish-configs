@@ -17,9 +17,9 @@ function __create_abbreviation --description 'Creates specified abbreviation'
     return $NOT_VALID_ABBREVIATION_ERROR
   end
   
-  abbr --add --universal $abbreviation $COMMAND
+  abbr --add $ABBREVIATION $COMMAND
   echo $PROMPT_SUCCESS_SIGN'Abbreviation '$PROMPT_ABBR_IDENTIFIER_COLOR\"$ABBREVIATION\"$RESET_COLOR\
-    'successfully recreated from remote.'
+    'for '$PROMPT_ABBR_COMMAND_COLOR\"$COMMAND\"$RESET_COLOR' successfully created.'
 end
 
 function abbreviations_recreate --description 'Creates missing abbreviations'
