@@ -28,12 +28,8 @@ There are several environment variables to control how prompt is displayed and h
 - `PROMPT_PATH_PATH_COLOR` - specifies everything but `/` color to be displayed in fish prompt
 - `PROMPT_PATH_DELIMITER_COLOR` - specifies `/` color to be displayed in fish prompt
 
-### Pipeline status-specific environment variables
+### Pipeline-specific environment variables
 
 - `PROMPT_PIPESTATUS_BRACKET_COLOR` - specifies `[` and `]` color to be displayed in fish prompt
 - `PROMPT_PIPESTATUS_STATUS_COLOR` - specifies status color to be displayed in fish prompt
 - `PROMPT_PIPESTATUS_DELIMITER_COLOR` - specifies `|` color to be displayed in fish prompt
-
-## Usage
-
-Modify corresponding files in your home subdirectory.
