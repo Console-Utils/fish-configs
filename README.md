@@ -38,3 +38,7 @@ There are several environment variables to control how prompt is displayed and h
 - `PROMPT_PIPESTATUS_BRACKET_COLOR` - specifies `[` and `]` color to be displayed in fish prompt
 - `PROMPT_PIPESTATUS_STATUS_COLOR` - specifies status color to be displayed in fish prompt
 - `PROMPT_PIPESTATUS_DELIMITER_COLOR` - specifies `|` color to be displayed in fish prompt
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/42812113/139679164-390f9192-3c29-4760-88ed-cebe9af8be06.png)
