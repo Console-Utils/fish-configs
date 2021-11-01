@@ -1,8 +1,8 @@
 function __colorize_path --description 'Colorizes path'
   set --local directory $argv[1]
 
-  set --query PROMPT_PATH_PATH_COLOR || set --universal PROMPT_PATH_PATH_COLOR (set_color brcyan)
-  set --query PROMPT_PATH_DELIMITER_COLOR || set --universal PROMPT_PATH_DELIMITER_COLOR (set_color brblue)
+  set --query PROMPT_PATH_PATH_COLOR || set --local PROMPT_PATH_PATH_COLOR (set_color brcyan)
+  set --query PROMPT_PATH_DELIMITER_COLOR || set --local PROMPT_PATH_DELIMITER_COLOR (set_color brblue)
 
   set --local MINE_COLOR (set_color --bold)
   set --local WORK_COLOR (set_color --bold)
