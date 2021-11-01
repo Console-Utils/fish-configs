@@ -23,19 +23,19 @@ end
 
 function abbreviations_recreate --description 'Creates missing abbreviations'
   set abbreviations cmi 'cd /home/emilyseville7cfg/Documents/mine/'
-  set -a abbreviations cwo 'cd /home/emilyseville7cfg/Documents/work/'
-  set -a abbreviations e echo
-  set -a abbreviations f for
-  set -a abbreviations gcl 'git clone'
-  set -a abbreviations gfe 'git fetch'
-  set -a abbreviations gin 'git init'
-  set -a abbreviations gre 'git_repo_recreate'
-  set -a abbreviations gsy 'git pull && git push'
-  set -a abbreviations gun 'rm -rf .git'
-  set -a abbreviations i 'if test'
-  set -a abbreviations pf printf
-  set -a abbreviations r 'source /home/emilyseville7cfg/.config/fish/config.fish'
-  set -a abbreviations w 'while test'
+  set --append abbreviations cwo 'cd /home/emilyseville7cfg/Documents/work/'
+  set --append abbreviations e echo
+  set --append abbreviations f for
+  set --append abbreviations gcl 'git clone'
+  set --append abbreviations gfe 'git fetch'
+  set --append abbreviations gin 'git init'
+  set --append abbreviations gre 'git_repo_recreate'
+  set --append abbreviations gsy 'git pull && git push'
+  set --append abbreviations gun 'rm -rf .git'
+  set --append abbreviations i 'if test'
+  set --append abbreviations pf printf
+  set --append abbreviations r 'source /home/emilyseville7cfg/.config/fish/config.fish'
+  set --append abbreviations w 'while test'
 
   set --local errors 0
   set --local i 1
