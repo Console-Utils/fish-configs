@@ -23,6 +23,10 @@ There are several environment variables to control how prompt is displayed and h
 - `PROMPT_ABBR_COMMAND_COLOR` - specifies command color to be diplayed in messages from helper functions
 - `PROMPT_ABBR_IDENTIFIER_COLOR` - specifies abbreviation identifier color to be diplayed in messages from helper functions
 
+## Variable-specific environment variables
+
+- `PROMPT_VARIABLE_IDENTIFIER_COLOR` - specifies variable identifier color to be diplayed in messages from helper functions
+
 ### Git-specific environment variables
 
 - `PROMPT_GIT_PATH_COLOR` - specifies path color to be diplayed in messages from helper functions
