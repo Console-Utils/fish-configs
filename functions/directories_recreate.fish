@@ -15,6 +15,8 @@ function __create_directory --description 'Creates directory'
     return $NOT_VALID_DIRECTORY_ERROR
   else
     mkdir $DIRECTORY
+    echo $PROMPT_SUCCESS_SIGN'Folder '$PROMPT_PATH_COLOR\"$DIRECTORY\"$RESET_COLOR\
+      'successfully created.'
   end
 end
 
@@ -25,10 +27,7 @@ function directories_recreate --description 'Recreates directory structure as on
 
   set --query PROMPT_VARIABLE_IDENTIFIER_COLOR || set --local PROMPT_VARIABLE_IDENTIFIER_COLOR (set_color brred)
 
-  set --query PROMPT_SUCCESS_SIGN || set --local PROMPT_SUCCESS_SIGN (set_color brgreen)'✔'(set_color normal)
   set --query PROMPT_ERROR_SIGN || set --local PROMPT_ERROR_SIGN (set_color brred)'✘'(set_color normal)
-
-  set --query PROMPT_PATH_COLOR || set --local PROMPT_PATH_COLOR (set_color brred)
 
   if ! set --query MINE_PATH WORK_PATH
     echo -s $PROMPT_ERROR_SIGN'Can\'t proceed because any of the following variables are undefined: '\
