@@ -22,8 +22,8 @@ function __create_variable --description 'Creates specified variable'
 end
 
 function variables_recreate --description 'Creates missing variables'
-  set variables MINE_PATH '/home/emilyseville7cfg/Documents/mine'
-  set --append variables WORK_PATH '/home/emilyseville7cfg/Documents/work'
+  set variables MINE_PATH "$HOME/Documents/mine"
+  set --append variables WORK_PATH "$HOME/Documents/work"
 
   set --local errors 0
   set --local i 1
