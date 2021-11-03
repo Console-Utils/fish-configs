@@ -1,12 +1,12 @@
+set --query PROMPT_PATH_COLOR || set --global PROMPT_PATH_COLOR (set_color brred)
+set --query PROMPT_ERROR_SIGN || set --global PROMPT_ERROR_SIGN (set_color brred)'✘'(set_color normal)
+
 function __create_directory --description 'Creates directory'
   set --local NOT_VALID_DIRECTORY_ERROR 1
   
   set --local DIRECTORY $argv[1]
 
   set --query PROMPT_SUCCESS_SIGN || set --local PROMPT_SUCCESS_SIGN (set_color brgreen)'✔'(set_color normal)
-  set --query PROMPT_ERROR_SIGN || set --local PROMPT_ERROR_SIGN (set_color brred)'✘'(set_color normal)
-
-  set --query PROMPT_PATH_COLOR || set --local PROMPT_PATH_COLOR (set_color brred)
 
   if test -d $DIRECTORY
     echo -s $PROMPT_ERROR_SIGN'Can\'t create '\
@@ -25,14 +25,10 @@ function directories_recreate --description 'Recreates directory structure as on
 
   set --local directories $MINE_PATH $WORK_PATH $MINE_PATH'/'{fish,bash,sed,awk}
 
-  set --query PROMPT_VARIABLE_IDENTIFIER_COLOR || set --local PROMPT_VARIABLE_IDENTIFIER_COLOR (set_color brred)
-
-  set --query PROMPT_ERROR_SIGN || set --local PROMPT_ERROR_SIGN (set_color brred)'✘'(set_color normal)
-
   if ! set --query MINE_PATH WORK_PATH
     echo -s $PROMPT_ERROR_SIGN'Can\'t proceed because any of the following variables are undefined: '\
-      $PROMPT_VARIABLE_IDENTIFIER_COLOR\"MINE_PATH\"$RESET_COLOR','\
-      $PROMPT_VARIABLE_IDENTIFIER_COLOR\"WORK_PATH\"$RESET_COLOR'.' >&2
+      $PROMPT_PATH_COLOR\"MINE_PATH\"$RESET_COLOR','\
+      $PROMPT_PATH_COLOR\"WORK_PATH\"$RESET_COLOR'.' >&2
     return $NO_REQUIRED_ENVS_ERROR
   end
 
