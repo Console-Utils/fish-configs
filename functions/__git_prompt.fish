@@ -10,8 +10,8 @@ function __git_prompt --description 'Prints info about .git repo'
     string replace --filter --regex '^A\s+(.*)$' '$1' | count)
   
   set --local prompt (string join ' ' \
-    (test $UNTRACKED_COUNT -eq 0 && echo -n '' || echo -n $PROMPT_GIT_UNTRACKED_SIGN':'$UNTRACKED_COUNT)\
-      (test $STAGED_COUNT -eq 0 && echo -n '' || echo -n $PROMPT_GIT_STAGED_SIGN':'$STAGED_COUNT))
+    (test $UNTRACKED_COUNT -eq 0 && echo -n || echo -n $PROMPT_GIT_UNTRACKED_SIGN':'$UNTRACKED_COUNT)\
+      (test $STAGED_COUNT -eq 0 && echo -n || echo -n $PROMPT_GIT_STAGED_SIGN':'$STAGED_COUNT))
   
   echo $prompt
 end
