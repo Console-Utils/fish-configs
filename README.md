@@ -53,6 +53,11 @@ There are several environment variables to control how prompt is displayed and h
 - `PROMPT_NET_SIGN` - specifies string to be displayed when there is at least one .sln file in directory
 - `PROMPT_NET_FRAMEWORK_IDENTIFIER_COLOR` - specifies .NET/Mono name color to be diplayed in prompt
 
+## Node-specific environment variables
+
+- `PROMPT_NODE_SIGN` - specifies string to be displayed when there is at least one package.json file in directory
+- `PROMPT_NODE_IDENTIFIER_COLOR` - specifies Node name color to be diplayed in prompt
+
 ## Screenshots
 
 ![image](https://user-images.githubusercontent.com/42812113/139679164-390f9192-3c29-4760-88ed-cebe9af8be06.png)
