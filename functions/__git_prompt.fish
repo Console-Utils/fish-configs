@@ -11,7 +11,7 @@ function __git_prompt --description 'Prints info about .git repo'
 
   # Check branch state
   set --local branch (git branch --show-current)
-  test -z "$branch" && set --local branch $PROMPT_GIT_DETACHED_HEAD_SIGN
+  ! set --query branch[1] && set --local branch $PROMPT_GIT_DETACHED_HEAD_SIGN
 
   # Check count of untracked and staged files
   set --local UNTRACKED_COUNT (git status --porcelain |\
