@@ -1,7 +1,8 @@
 function __node_prompt --description 'Prints info about Node version'
-  set --query PROMPT_NODE_IDENTIFIER_COLOR || set --local PROMPT_NODE_IDENTIFIER_COLOR (set_color brcyan)
+  set --query PROMPT_NODE_IDENTIFIER_COLOR || set --local PROMPT_NODE_IDENTIFIER_COLOR (set_color brgreen)
+  set --query PROMPT_NODE_VERSION_COLOR || set --local PROMPT_NODE_VERSION_COLOR (set_color green)
 
-  set --query PROMPT_NODE_SIGN || set --local PROMPT_NODE_SIGN '🔮 '
+  set --query PROMPT_NODE_SIGN || set --local PROMPT_NODE_SIGN (set_color green)'❰'$RESET_COLOR
 
   set --local CURRENT_DIR $PWD
   set --local not_found true
@@ -27,7 +28,7 @@ function __node_prompt --description 'Prints info about Node version'
   if command --query --search node
     set --local NODE_VERSION (node --version)
     string match --regex --quiet '^v(?<MAJOR_VERSION>\d+)\.(?<MINOR_VERSION>\d+).*' $NODE_VERSION
-    set PROMPT $PROMPT$PROMPT_NODE_IDENTIFIER_COLOR"node $MAJOR_VERSION.$MINOR_VERSION$RESET_COLOR"
+    set PROMPT $PROMPT$PROMPT_NODE_IDENTIFIER_COLOR"node "$PROMPT_NODE_VERSION_COLOR$MAJOR_VERSION.$MINOR_VERSION$RESET_COLOR
   else
     set PROMPT
   end
