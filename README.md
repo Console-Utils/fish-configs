@@ -31,6 +31,8 @@ There are several environment variables to control how prompt is displayed and h
 
 - `PROMPT_GIT_PATH_COLOR` - specifies path color to be diplayed in messages from helper functions
 - `PROMPT_GIT_IDENTIFIER_COLOR` - specifies identifier color (branch name for example) to be diplayed in messages from helper functions
+- `PROMPT_GIT_INCOMING_SIGN` - specifies string to be displayed when there are incoming commits
+- `PROMPT_GIT_OUTCOMING_SIGN` - specifies string to be displayed when there are outcoming commits
 - `PROMPT_GIT_UNTRACKED_SIGN` - specifies string to be displayed when there are untracked files in repo
 - `PROMPT_GIT_STAGED_SIGN` - specifies string to be displayed when there are staged files in repo
 - `PROMPT_GIT_DETACHED_HEAD_SIGN` - specifies string to be displayed when HEAD is in a detached state in repo
