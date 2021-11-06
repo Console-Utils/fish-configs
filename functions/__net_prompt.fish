@@ -2,7 +2,20 @@ function __net_prompt --description 'Prints info about .NET/Mono version'
   set --query PROMPT_NET_SIGN || set --local PROMPT_NET_SIGN '🔮 '
 
   set --local CURRENT_DIR $PWD
-  test -f .sln || return
+  set --local not_found true
+  while ! test -f .sln
+    if test $PWD != '/'
+      cd ..
+    else
+      set not_found false
+      break
+    end
+  end
+
+  if test $not_found = false
+    cd $CURRENT_DIR
+    return
+  end
 
   set --local PROMPT $PROMPT_NET_SIGN
 
