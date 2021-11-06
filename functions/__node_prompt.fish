@@ -1,7 +1,7 @@
 function __node_prompt --description 'Prints info about Node version'
   set --query PROMPT_NODE_IDENTIFIER_COLOR || set --local PROMPT_NODE_IDENTIFIER_COLOR (set_color brcyan)
 
-  set --query PROMPT_NET_SIGN || set --local PROMPT_NET_SIGN '🔮 '
+  set --query PROMPT_NODE_SIGN || set --local PROMPT_NODE_SIGN '🔮 '
 
   set --local CURRENT_DIR $PWD
   set --local not_found true
@@ -22,7 +22,7 @@ function __node_prompt --description 'Prints info about Node version'
     return
   end
 
-  set --local PROMPT $PROMPT_NET_SIGN
+  set --local PROMPT $PROMPT_NODE_SIGN
 
   if command --query --search node
     set --local NODE_VERSION (node --version)
