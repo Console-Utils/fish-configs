@@ -3,9 +3,12 @@ function __net_prompt --description 'Prints info about .NET/Mono version'
 
   set --local CURRENT_DIR $PWD
   set --local not_found true
-  while ! test -f .sln
+
+  set solutions (find -maxdepth 1 -type f -name '*.sln' -print0 | string split0)
+  while ! set --query solutions[1]
     if test $PWD != '/'
       cd ..
+      set solutions (find -maxdepth 1 -type f -name '*.sln' -print0 | string split0)
     else
       set not_found false
       break
