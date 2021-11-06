@@ -23,8 +23,10 @@ function __net_prompt --description 'Prints info about .NET/Mono version'
     set PROMPT $PROMPT'mono '(mono --version | awk 'NR == 1 { print $5 }')
   else if command --query --search dotnet
     set PROMPT $PROMPT'dotnet '(dotnet --version)
+  else
+    set PROMPT
   end
 
-  echo $PROMPT
+  echo -n $PROMPT
   cd $CURRENT_DIR
 end
