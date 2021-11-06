@@ -15,5 +15,5 @@ function fish_prompt
     return
   end
 
-  echo -s (set_color yellow) (__cwd_prompt) (__pipestatus_prompt $STATUSES) $user_char
+  echo -s (set_color yellow) (__cwd_prompt) ' '(__git_prompt) ' '(__net_prompt) (__pipestatus_prompt $STATUSES) $user_char
 end
