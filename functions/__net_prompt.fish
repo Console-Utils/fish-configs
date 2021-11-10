@@ -28,11 +28,11 @@ function __net_prompt --description 'Prints info about .NET/Mono version'
   if command --query --search mono
     set --local MONO_VERSION (mono --version | awk 'NR == 1 { print $5 }')
     string match --regex --quiet '^(?<MAJOR_VERSION>\d+)\.(?<MINOR_VERSION>\d+).*' $MONO_VERSION
-    set PROMPT $PROMPT$PROMPT_NET_FRAMEWORK_IDENTIFIER_COLOR"mono "$PROMPT_NET_VERSION_COLOR$MAJOR_VERSION.$MINOR_VERSION$RESET_COLOR
+    set PROMPT $PROMPT$PROMPT_NET_FRAMEWORK_IDENTIFIER_COLOR'mono '$PROMPT_NET_VERSION_COLOR$MAJOR_VERSION.$MINOR_VERSION$RESET_COLOR
   else if command --query --search dotnet
     set --local DOTNET_VERSION (dotnet --version)
     string match --regex --quiet '^(?<MAJOR_VERSION>\d+)\.(?<MINOR_VERSION>\d+).*' $DOTNET_VERSION
-    set PROMPT $PROMPT$PROMPT_NET_FRAMEWORK_IDENTIFIER_COLOR"dotnet "$PROMPT_NET_VERSION_COLOR$MAJOR_VERSION.$MINOR_VERSION$RESET_COLOR
+    set PROMPT $PROMPT$PROMPT_NET_FRAMEWORK_IDENTIFIER_COLOR'dotnet '$PROMPT_NET_VERSION_COLOR$MAJOR_VERSION.$MINOR_VERSION$RESET_COLOR
   else
     set PROMPT
   end
