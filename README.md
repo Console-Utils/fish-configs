@@ -42,6 +42,11 @@ There are several environment variables to control how prompt is displayed and h
 - `PROMPT_PATH_PATH_COLOR` - specifies everything but `/` color to be displayed in fish prompt
 - `PROMPT_PATH_DELIMITER_COLOR` - specifies `/` color to be displayed in fish prompt
 
+### Date-specific environment variables
+
+- `PROMPT_DATE_COLOR` - specifies date color to be displayed in fish prompt
+- `PROMPT_DATE_FORMAT` - specifies date format to be displayed in fish prompt
+
 ### Pipeline-specific environment variables
 
 - `PROMPT_PIPESTATUS_BRACKET_COLOR` - specifies `[` and `]` color to be displayed in fish prompt
