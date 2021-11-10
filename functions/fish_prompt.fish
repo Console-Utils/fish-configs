@@ -1,9 +1,9 @@
 function fish_prompt
+  set --local STATUSES $pipestatus
+
   set --query PROMPT_ERROR_SIGN || set --local PROMPT_ERROR_SIGN (set_color brred)'✘'(set_color normal)
 
   set --query PROMPT_PATH_COLOR || set --local PROMPT_PATH_COLOR (set_color brred)
-
-  set --local STATUSES $pipestatus
 
   set --local user_char '💲'
   fish_is_root_user && set user_char '⭐💲'
@@ -16,5 +16,5 @@ function fish_prompt
   end
 
   echo -s (set_color yellow) (__cwd_prompt) ' '(__git_prompt) ' '(__net_prompt) ' '(__node_prompt)\
-    (__pipestatus_prompt $STATUSES) $user_char
+    ' '(__date_prompt) (__pipestatus_prompt $STATUSES) $user_char
 end

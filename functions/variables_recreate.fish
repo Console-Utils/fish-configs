@@ -1,7 +1,6 @@
-function __create_variable --description 'Creates specified variable'
+function __create_variable --argument-names VARIABLE --description 'Creates specified variable'
   set --local NOT_VALID_VARIABLE_ERROR 1
   
-  set --local VARIABLE $argv[1]
   set --local VALUES $argv[2..]
 
   set --query PROMPT_SUCCESS_SIGN || set --local PROMPT_SUCCESS_SIGN (set_color brgreen)'✔'(set_color normal)

@@ -1,21 +1,19 @@
 set --query PROMPT_PATH_COLOR || set --global PROMPT_PATH_COLOR (set_color brred)
 set --query PROMPT_ERROR_SIGN || set --global PROMPT_ERROR_SIGN (set_color brred)'✘'(set_color normal)
 
-function __create_directory --description 'Creates directory'
+function __create_directory --argument-names DIRECTORY --description 'Creates directory'
   set --local NOT_VALID_DIRECTORY_ERROR 1
-  
-  set --local DIRECTORY $argv[1]
 
   set --query PROMPT_SUCCESS_SIGN || set --local PROMPT_SUCCESS_SIGN (set_color brgreen)'✔'(set_color normal)
 
   if test -d $DIRECTORY
     echo -s $PROMPT_ERROR_SIGN'Can\'t create '\
-      $PROMPT_PATH_COLOR\"$DIRECTORY\"$RESET_COLOR' folder because '\
-      $PROMPT_PATH_COLOR\"$DIRECTORY\"$RESET_COLOR' already exists.' >&2
+      $PROMPT_PATH_COLOR\"$DIRECTORY\"(set_color normal)' folder because '\
+      $PROMPT_PATH_COLOR\"$DIRECTORY\"(set_color normal)' already exists.' >&2
     return $NOT_VALID_DIRECTORY_ERROR
   else
     mkdir $DIRECTORY
-    echo $PROMPT_SUCCESS_SIGN'Folder '$PROMPT_PATH_COLOR\"$DIRECTORY\"$RESET_COLOR\
+    echo $PROMPT_SUCCESS_SIGN'Folder '$PROMPT_PATH_COLOR\"$DIRECTORY\"(set_color normal)\
       'successfully created.'
   end
 end
@@ -27,8 +25,8 @@ function directories_recreate --description 'Recreates directory structure as on
 
   if ! set --query MINE_PATH WORK_PATH
     echo -s $PROMPT_ERROR_SIGN'Can\'t proceed because any of the following variables are undefined: '\
-      $PROMPT_PATH_COLOR\"MINE_PATH\"$RESET_COLOR','\
-      $PROMPT_PATH_COLOR\"WORK_PATH\"$RESET_COLOR'.' >&2
+      $PROMPT_PATH_COLOR\"MINE_PATH\"(set_color normal)','\
+      $PROMPT_PATH_COLOR\"WORK_PATH\"(set_color normal)'.' >&2
     return $NO_REQUIRED_ENVS_ERROR
   end
 

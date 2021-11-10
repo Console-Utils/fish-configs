@@ -22,5 +22,5 @@ function __pipestatus_prompt --description 'Prints $pipestatus in human-readable
     test $i -lt (count $STATUSES) && echo -n $PROMPT_PIPESTATUS_DELIMITER_COLOR'|'
   end
 
-  echo -n $PROMPT_PIPESTATUS_BRACKET_COLOR']'
+  echo -n $PROMPT_PIPESTATUS_BRACKET_COLOR']'(set_color normal)
 end
