@@ -5,20 +5,20 @@ function __net_prompt --description 'Prints info about .NET/Mono version'
   set --query PROMPT_NET_SIGN || set --local PROMPT_NET_SIGN (set_color cyan)'❰'(set_color normal)
 
   set --local CURRENT_DIR $PWD
-  set --local not_found true
+  set --local not_found $TRUE
 
-  set solutions (find -maxdepth 1 -type f -name '*.sln' -print0 | string split0)
-  while ! set --query solutions[1]
+  set metadata (find -maxdepth 1 -type f -name '*.sln' -print0 | string split0)
+  while ! set --query metadata[1]
     if test $PWD != '/'
       cd ..
-      set solutions (find -maxdepth 1 -type f -name '*.sln' -print0 | string split0)
+      set metadata (find -maxdepth 1 -type f -name '*.sln' -print0 | string split0)
     else
-      set not_found false
+      set not_found $FALSE
       break
     end
   end
 
-  if test $not_found = false
+  if test $not_found -eq $FALSE
     cd $CURRENT_DIR
     return
   end
