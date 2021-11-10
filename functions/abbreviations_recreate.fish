@@ -9,14 +9,14 @@ function __create_abbreviation --argument-names ABBREVIATION COMMAND --descripti
 
   if abbr --query $ABBREVIATION
     echo -s $PROMPT_ERROR_SIGN'Can\'t create '\
-      $PROMPT_ABBR_COMMAND_COLOR\"$COMMAND\"$RESET_COLOR' abbreviation because '\
-      $PROMPT_ABBR_IDENTIFIER_COLOR\"$ABBREVIATION\"$RESET_COLOR' already exists.' >&2
+      $PROMPT_ABBR_COMMAND_COLOR\"$COMMAND\"(set_color normal)' abbreviation because '\
+      $PROMPT_ABBR_IDENTIFIER_COLOR\"$ABBREVIATION\"(set_color normal)' already exists.' >&2
     return $NOT_VALID_ABBREVIATION_ERROR
   end
   
   abbr --add $ABBREVIATION $COMMAND
-  echo $PROMPT_SUCCESS_SIGN'Abbreviation '$PROMPT_ABBR_IDENTIFIER_COLOR\"$ABBREVIATION\"$RESET_COLOR\
-    'for '$PROMPT_ABBR_COMMAND_COLOR\"$COMMAND\"$RESET_COLOR' successfully created.'
+  echo $PROMPT_SUCCESS_SIGN'Abbreviation '$PROMPT_ABBR_IDENTIFIER_COLOR\"$ABBREVIATION\"(set_color normal)\
+    'for '$PROMPT_ABBR_COMMAND_COLOR\"$COMMAND\"(set_color normal)' successfully created.'
 end
 
 function abbreviations_recreate --description 'Creates missing abbreviations'
