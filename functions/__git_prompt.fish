@@ -7,7 +7,10 @@ function __git_prompt --description 'Prints info about .git repo'
 
   set --query PROMPT_GIT_DETACHED_HEAD_SIGN || set --local PROMPT_GIT_DETACHED_HEAD_SIGN (set_color brred)'⌥!'(set_color normal)
 
-  ! test -d .git && return
+  set --local IS_INSIDE_WORK_TREE (git rev-parse --is-inside-work-tree 2> /dev/null)
+  if test $status -ne 0 || test "$IS_INSIDE_WORK_TREE" = 'false'
+    return
+  end 
 
   # Check branch state
   set --local branch (git branch --show-current)
