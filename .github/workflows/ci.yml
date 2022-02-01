@@ -4,13 +4,29 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-jobs:  
+env:
+  CI_HELPERS_PREFIX: ci-helpers
+
+jobs:
+  check-mergeability:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: check
+      run: |
+        bash $CI_HELPERS_PREFIX/scripts/github_flow/check_mergeability.sh
+
   markdown-lint:
     runs-on: ubuntu-20.04
     
     steps:
-      - uses: actions/checkout@v2
-      - name: lint
-        run: |
-          npm install -g markdownlint-cli
-          markdownlint *.md
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: lint
+      run: |
+        npm install --global markdownlint-cli
+        markdownlint --config $CI_HELPERS_PREFIX/configs/executable.yml *.md
