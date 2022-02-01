@@ -10,8 +10,6 @@ My `~/.config/fish/config.fish` config and `~/.config/fish/functions/` folder.
 
 Modify corresponding `~/.config/fish/config.fish` file and `~/.config/fish/functions/` directory.
 
-There are several environment variables to control how prompt is displayed and how helper functions work:
-
 ## Supported environments and examples
 
 This info is available only [here](https://console-utils.github.io/).
