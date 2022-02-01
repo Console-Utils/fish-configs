@@ -12,57 +12,6 @@ Modify corresponding `~/.config/fish/config.fish` file and `~/.config/fish/funct
 
 There are several environment variables to control how prompt is displayed and how helper functions work:
 
-### General environment variables
+## Supported environments and examples
 
-- `PROMPT_SUCCESS_SIGN` - specifies string to be displayed when some operation completed successfully
-- `PROMPT_WARNING_SIGN` - specifies string to be displayed when some operation completed successfully but with warnings
-- `PROMPT_ERROR_SIGN` - specifies string to be displayed when some operation failed
-
-### Abbreviation-specific environment variables
-
-- `PROMPT_ABBR_COMMAND_COLOR` - specifies command color to be diplayed in messages from helper functions
-- `PROMPT_ABBR_IDENTIFIER_COLOR` - specifies abbreviation identifier color to be diplayed in messages from helper functions
-
-### Variable-specific environment variables
-
-- `PROMPT_VARIABLE_IDENTIFIER_COLOR` - specifies variable identifier color to be diplayed in messages from helper functions
-
-### Git-specific environment variables
-
-- `PROMPT_GIT_PATH_COLOR` - specifies path color to be diplayed in messages from helper functions
-- `PROMPT_GIT_IDENTIFIER_COLOR` - specifies identifier color (branch name for example) to be diplayed in messages from helper functions
-- `PROMPT_GIT_INCOMING_SIGN` - specifies string to be displayed when there are incoming commits
-- `PROMPT_GIT_OUTCOMING_SIGN` - specifies string to be displayed when there are outcoming commits
-- `PROMPT_GIT_UNTRACKED_SIGN` - specifies string to be displayed when there are untracked files in repo
-- `PROMPT_GIT_STAGED_SIGN` - specifies string to be displayed when there are staged files in repo
-- `PROMPT_GIT_DETACHED_HEAD_SIGN` - specifies string to be displayed when HEAD is in a detached state in repo
-
-### Path-specific environment variables
-
-- `PROMPT_PATH_PATH_COLOR` - specifies everything but `/` color to be displayed in fish prompt
-- `PROMPT_PATH_DELIMITER_COLOR` - specifies `/` color to be displayed in fish prompt
-
-### Date-specific environment variables
-
-- `PROMPT_DATE_COLOR` - specifies date color to be displayed in fish prompt
-- `PROMPT_DATE_FORMAT` - specifies date format to be displayed in fish prompt
-
-### Pipeline-specific environment variables
-
-- `PROMPT_PIPESTATUS_BRACKET_COLOR` - specifies `[` and `]` color to be displayed in fish prompt
-- `PROMPT_PIPESTATUS_STATUS_COLOR` - specifies status color to be displayed in fish prompt
-- `PROMPT_PIPESTATUS_DELIMITER_COLOR` - specifies `|` color to be displayed in fish prompt
-
-## .NET/Mono-specific environment variables
-
-- `PROMPT_NET_SIGN` - specifies string to be displayed when there is at least one .sln file in directory
-- `PROMPT_NET_FRAMEWORK_IDENTIFIER_COLOR` - specifies .NET/Mono name color to be diplayed in prompt
-
-## Node-specific environment variables
-
-- `PROMPT_NODE_SIGN` - specifies string to be displayed when there is at least one package.json file in directory
-- `PROMPT_NODE_IDENTIFIER_COLOR` - specifies Node name color to be diplayed in prompt
-
-## Screenshots
-
-![image](https://user-images.githubusercontent.com/42812113/139679164-390f9192-3c29-4760-88ed-cebe9af8be06.png)
+This info is available only [here](https://console-utils.github.io/).
